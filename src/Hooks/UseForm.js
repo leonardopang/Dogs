@@ -5,6 +5,10 @@ const types = {
     regex: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
     message: "Preencha um email válido",
   },
+  number: {
+    regex: /^\d+$/,
+    message: 'Utilize números apenas'
+  },
 };
 
 const UseForm = (type) => {
