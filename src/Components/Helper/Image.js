@@ -1,9 +1,20 @@
-import React from 'react'
+import React from "react";
+import styles from "./Image.module.css";
 
-const Image = () => {
+const Image = ({ alt, ...props }) => {
+  const [skeleton, setSkeleton] = React.useState(true);
+
+  function handleLoading({ target }) {
+    setSkeleton(false);
+    target.style.opacity = 1;
+  }
+
   return (
-    <div>Image</div>
-  )
-}
+    <div className={styles.wrapper}>
+      {skeleton && <div className={styles.skeleton}></div>}
+      <img onLoad={handleLoading} className={styles.img} alt={alt} {...props} />
+    </div>
+  );
+};
 
-export default Image
+export default Image;
