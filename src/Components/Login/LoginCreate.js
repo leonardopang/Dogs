@@ -9,7 +9,7 @@ import Error from "../Helper/Error";
 
 const LoginCreate = () => {
   const username = useForm();
-  const email = useForm("email");
+  const email = useForm('email');
   const password = useForm();
 
   const { userLogin } = React.useContext(UserContext);
@@ -25,8 +25,9 @@ const LoginCreate = () => {
     const { response } = await request(url, options);
     if (response.ok) userLogin(username.value, password.value);
   }
+
   return (
-    <section className="animaLeft">
+    <section className="animeLeft">
       <h1 className="title">Cadastre-se</h1>
       <form onSubmit={handleSubmit}>
         <Input label="Usuário" type="text" name="username" {...username} />
