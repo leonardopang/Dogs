@@ -104,7 +104,7 @@ export function PHOTO_DELETE(id) {
       method: 'DELETE',
       headers: {
         Authorization: 'Bearer ' + window.localStorage.getItem('token'),
-      }
+      },
     },
   };
 }
