@@ -2,22 +2,23 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Input from "../Forms/Input";
 import Button from "../Forms/Button";
-import UseForm from "../../Hooks/UseForm";
-import Error from "../Helper/Error";
+import useForm from "../../Hooks/UseForm";
 import { UserContext } from "../../UserContext";
-import styles from './LoginForm.module.css'
-import stylesBtn from '../Forms/Button.module.css';
+import Error from "../Helper/Error";
+import styles from "./LoginForm.module.css";
+import stylesBtn from "../Forms/Button.module.css";
 
 const LoginForm = () => {
-  const username = UseForm();
-  const password = UseForm();
+  const username = useForm();
+  const password = useForm();
 
-  const { userLogin, error, loading } = React.useContext(UserContext)
+  const { userLogin, error, loading } = React.useContext(UserContext);
 
   async function handleSubmit(event) {
     event.preventDefault();
+
     if (username.validate() && password.validate()) {
-      userLogin(username.value, password.value)
+      userLogin(username.value, password.value);
     }
   }
 
@@ -27,10 +28,16 @@ const LoginForm = () => {
       <form className={styles.form} onSubmit={handleSubmit}>
         <Input label="Usuário" type="text" name="username" {...username} />
         <Input label="Senha" type="password" name="password" {...password} />
-        {loading ? (<Button disabled>Carregando...</Button>) : (<Button>Entrar</Button>)}
+        {loading ? (
+          <Button disabled>Carregando...</Button>
+        ) : (
+          <Button>Entrar</Button>
+        )}
         <Error error={error} />
       </form>
-      <Link className={styles.perdeu} to="/login/perdeu">Perdeu a Senha?</Link>
+      <Link className={styles.perdeu} to="/login/perdeu">
+        Perdeu a Senha?
+      </Link>
       <div className={styles.cadastro}>
         <h2 className={styles.subtitle}>Cadastre-se</h2>
         <p>Ainda não possui conta? Cadastre-se no site.</p>
